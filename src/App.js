@@ -1,8 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
+import { PokerCard } from "components";
 
-class App extends Component {
+class App extends React.Component {
   render() {
-    return <div className="App">App</div>;
+    return (
+      <div className="App">
+        <PokerCard />
+      </div>
+    );
   }
 }
 
