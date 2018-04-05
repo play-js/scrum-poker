@@ -1,11 +1,11 @@
 import React from "react";
-import { PokerCard } from "components";
+import { Poker } from "views";
 
 class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <PokerCard />
+        <Poker />
       </div>
     );
   }
