@@ -3,7 +3,7 @@ import React from "react";
 // Material-UI
 import { withStyles } from "material-ui/styles";
 import Grid from "material-ui/Grid";
-import Restaurant from "material-ui-icons/Restaurant";
+import LocalCafe from "material-ui-icons/LocalCafe";
 // Custom
 import { PokerCard } from "components";
 // Others
@@ -13,7 +13,7 @@ const styles = theme => ({});
 class Poker extends React.Component {
   valueList = [
     0,
-    "1/2",
+    0.5,
     1,
     2,
     3,
@@ -25,7 +25,7 @@ class Poker extends React.Component {
     100,
     "∞",
     "?",
-    <Restaurant />
+    <LocalCafe style={{ fontSize: 48 }} />
   ];
   render() {
     const { classes } = this.props;
