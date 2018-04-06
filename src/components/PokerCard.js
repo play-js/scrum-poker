@@ -6,6 +6,7 @@ import { withStyles } from "material-ui/styles";
 import Card from "material-ui/Card";
 import Grid from "material-ui/Grid";
 import Typography from "material-ui/Typography";
+import Grow from "material-ui/transitions/Grow";
 // Custom
 // Others
 
@@ -35,14 +36,15 @@ export function getGoldenRatio(value, mode = "height") {
 class PokerCard extends React.Component {
   state = {
     width: null,
-    height: null
+    height: null,
+    grow: false
   };
   componentDidMount() {
     const element = ReactDOM.findDOMNode(this.card);
     const { width } = element.getBoundingClientRect();
     const height = getGoldenRatio(width);
 
-    this.setState({ height });
+    this.setState({ height, grow: true });
     // window.addEventListener("resize", this.onResize(width));
   }
 
@@ -52,17 +54,22 @@ class PokerCard extends React.Component {
   };
 
   render() {
-    const { classes, value } = this.props;
+    const { classes, value, transitionDelay } = this.props;
 
     return (
-      <Grid item xs={3} sm={2}>
-        <div ref={card => (this.card = card)}>
+      <Grid item xs={3} sm={2} xl={1}>
+        <Grow
+          in={this.state.grow}
+          ref={card => (this.card = card)}
+          style={{ transitionDelay }}
+          {...{ timeout: 1000 }}
+        >
           <Card className={classes.card} style={{ height: this.state.height }}>
             <Typography className={classes.typography} variant="display2">
               {value}
             </Typography>
           </Card>
-        </div>
+        </Grow>
       </Grid>
     );
   }

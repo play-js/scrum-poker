@@ -1,1 +1,1 @@
-export { default as Poker } from "./Poker";
+export { default as Deck } from "./Deck";
