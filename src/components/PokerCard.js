@@ -13,8 +13,12 @@ import Grow from "material-ui/transitions/Grow";
 const styles = theme => ({
   card: {
     display: "flex",
-    alignItems: "center",
-    height: 150
+    alignItems: "center"
+    // height: 150
+    // "&:hover": {
+    //   cursor: "pointer",
+    //   transform: "skewX(50deg)"
+    // }
   },
   typography: {
     flex: 1,
@@ -33,6 +37,20 @@ export function getGoldenRatio(value, mode = "height") {
   return parseInt(result, 10);
 }
 
+export function getPokerCardRatio(value, mode = "height") {
+  let result = new Number();
+
+  if (mode === "height") {
+    result = value * 1.4;
+  } else {
+    result = value / 1.4;
+  }
+
+  return result.toFixed();
+}
+
+// export function ratioCalculator(value, mode = "golden") {}
+
 class PokerCard extends React.Component {
   state = {
     width: null,
@@ -42,20 +60,26 @@ class PokerCard extends React.Component {
   componentDidMount() {
     const element = ReactDOM.findDOMNode(this.card);
     const { width } = element.getBoundingClientRect();
-    const height = getGoldenRatio(width);
+    const height = parseInt(getPokerCardRatio(width), 10);
+    const newWidth = parseInt(getPokerCardRatio(height, "width"), 10);
 
-    this.setState({ height, grow: true });
+    this.setState({ width: newWidth, height, grow: true });
     // window.addEventListener("resize", this.onResize(width));
   }
 
-  onResize = width => {
-    const height = getGoldenRatio(width);
-    this.setState({ height });
+  // onResize = width => {
+  //   const height = getGoldenRatio(width);
+  //   this.setState({ height });
+  // };
+
+  handleClick = () => {
+    alert(this.props.value);
   };
 
   render() {
     const { classes, value, transitionDelay } = this.props;
-    const { grow, raised, height } = this.state;
+    const { grow, raised, width, height } = this.state;
+    const { handleClick } = this;
 
     return (
       <Grid item xs={3} sm={2} xl={1}>
@@ -68,11 +92,12 @@ class PokerCard extends React.Component {
           <Card
             className={classes.card}
             raised={raised}
-            style={{ height: height }}
+            style={{ width, height }}
             onMouseEnter={() => this.setState({ raised: true })}
             onMouseLeave={() => this.setState({ raised: false })}
+            onClick={handleClick}
           >
-            <Typography className={classes.typography} variant="display2">
+            <Typography className={classes.typography} variant="display1">
               {value}
             </Typography>
           </Card>
