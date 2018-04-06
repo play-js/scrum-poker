@@ -55,16 +55,23 @@ class PokerCard extends React.Component {
 
   render() {
     const { classes, value, transitionDelay } = this.props;
+    const { grow, raised, height } = this.state;
 
     return (
       <Grid item xs={3} sm={2} xl={1}>
         <Grow
-          in={this.state.grow}
+          in={grow}
           ref={card => (this.card = card)}
           style={{ transitionDelay }}
           {...{ timeout: 1000 }}
         >
-          <Card className={classes.card} style={{ height: this.state.height }}>
+          <Card
+            className={classes.card}
+            raised={raised}
+            style={{ height: height }}
+            onMouseEnter={() => this.setState({ raised: true })}
+            onMouseLeave={() => this.setState({ raised: false })}
+          >
             <Typography className={classes.typography} variant="display2">
               {value}
             </Typography>
