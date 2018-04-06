@@ -38,7 +38,7 @@ export function getGoldenRatio(value, mode = "height") {
 }
 
 export function getPokerCardRatio(value, mode = "height") {
-  let result = new Number();
+  let result;
 
   if (mode === "height") {
     result = value * 1.4;
