@@ -4,7 +4,6 @@ import ReactDOM from "react-dom";
 // Material-UI
 import { withStyles } from "material-ui/styles";
 import Card from "material-ui/Card";
-import Grid from "material-ui/Grid";
 import Typography from "material-ui/Typography";
 import Grow from "material-ui/transitions/Grow";
 // Custom
@@ -78,27 +77,25 @@ class PokerCard extends React.Component {
     const { handleClick } = this;
 
     return (
-      <Grid item xs={3} sm={2} xl={1}>
-        <Grow
-          in={grow}
-          ref={card => (this.card = card)}
-          style={{ transitionDelay }}
-          {...{ timeout: 1000 }}
+      <Grow
+        in={grow}
+        ref={card => (this.card = card)}
+        style={{ transitionDelay }}
+        {...{ timeout: 1000 }}
+      >
+        <Card
+          className={classes.card}
+          raised={raised}
+          style={{ width, height }}
+          onMouseEnter={() => this.setState({ raised: true })}
+          onMouseLeave={() => this.setState({ raised: false })}
+          onClick={handleClick}
         >
-          <Card
-            className={classes.card}
-            raised={raised}
-            style={{ width, height }}
-            onMouseEnter={() => this.setState({ raised: true })}
-            onMouseLeave={() => this.setState({ raised: false })}
-            onClick={handleClick}
-          >
-            <Typography className={classes.typography} variant="display1">
-              {value}
-            </Typography>
-          </Card>
-        </Grow>
-      </Grid>
+          <Typography className={classes.typography} variant="display1">
+            {value}
+          </Typography>
+        </Card>
+      </Grow>
     );
   }
 }

@@ -55,12 +55,13 @@ class Deck extends React.Component {
         spacing={16}
       >
         {this.valueList.map((value, index) => (
-          <PokerCard
-            key={value}
-            value={value}
-            transitionDelay={unit * index}
-            onRequestClick={() => this.setState({ isRotated: true })}
-          />
+          <Grid item xs={3} sm={2} xl={1} key={value}>
+            <PokerCard
+              value={value}
+              transitionDelay={unit * index}
+              onRequestClick={() => this.setState({ isRotated: true })}
+            />
+          </Grid>
         ))}
         {/* <ZoomedCard in={true} /> */}
       </Grid>
