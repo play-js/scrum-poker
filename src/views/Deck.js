@@ -39,14 +39,14 @@ class Deck extends React.Component {
   ];
   delay = 1000;
   unit = parseInt(this.delay / this.valueList.length, 10);
-  state = {
-    isRotated: false
+
+  handleRequestClick = () => {
+    this.props.rotateDeck(true);
   };
 
   render() {
-    const { classes } = this.props;
-    const { isRotated } = this.state;
-    const { unit } = this;
+    const { classes, isRotated } = this.props;
+    const { unit, handleRequestClick } = this;
 
     return (
       <Grid
@@ -59,7 +59,7 @@ class Deck extends React.Component {
             <PokerCard
               value={value}
               transitionDelay={unit * index}
-              onRequestClick={() => this.setState({ isRotated: true })}
+              onRequestClick={handleRequestClick}
             />
           </Grid>
         ))}
