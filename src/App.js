@@ -1,5 +1,14 @@
 import React from "react";
+// Material-UI
+import { withStyles } from "material-ui/styles";
+// custom
 import { Deck } from "views";
+
+const styles = theme => ({
+  App: {
+    height: "100%"
+  }
+});
 
 class App extends React.Component {
   render() {
@@ -11,4 +20,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withStyles(styles)(App);

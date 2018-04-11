@@ -9,7 +9,15 @@ import LocalCafe from "material-ui-icons/LocalCafe";
 import { PokerCard } from "components";
 // Others
 
-const styles = theme => ({});
+const styles = theme => ({
+  root: {
+    "&:hover": {
+      background: "pink",
+      transition: "1s",
+      transform: "rotateY(90deg)"
+    }
+  }
+});
 
 class Deck extends React.Component {
   valueList = [

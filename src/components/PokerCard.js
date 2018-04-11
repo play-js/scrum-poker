@@ -14,11 +14,6 @@ const styles = theme => ({
   card: {
     display: "flex",
     alignItems: "center"
-    // height: 150
-    // "&:hover": {
-    //   cursor: "pointer",
-    //   transform: "skewX(50deg)"
-    // }
   },
   typography: {
     flex: 1,
