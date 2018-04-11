@@ -12,7 +12,8 @@ import classNames from "classnames";
 
 const styles = theme => ({
   root: {
-    height: "100%"
+    height: "100%",
+    padding: theme.spacing.unit * 2
   },
   rotate: {
     transition: "1s",
@@ -40,8 +41,12 @@ class Deck extends React.Component {
   delay = 1000;
   unit = parseInt(this.delay / this.valueList.length, 10);
 
-  handleRequestClick = () => {
-    this.props.rotateDeck(true);
+  handleRequestClick = value => () => {
+    const { rotateDeck, setCardValue, rotateCard } = this.props;
+
+    rotateDeck(true);
+    setCardValue(value);
+    rotateCard(true);
   };
 
   render() {
@@ -59,7 +64,7 @@ class Deck extends React.Component {
             <PokerCard
               value={value}
               transitionDelay={unit * index}
-              onRequestClick={handleRequestClick}
+              onRequestClick={handleRequestClick(value)}
             />
           </Grid>
         ))}

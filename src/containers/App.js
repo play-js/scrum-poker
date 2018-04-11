@@ -15,22 +15,22 @@ const styles = theme => ({
 
 class App extends React.Component {
   render() {
-    const { classes, deck, actions } = this.props;
-    // const { isRotated } = this.props.;
+    const { classes, deck, card, actions } = this.props;
 
     return (
       <div className={classes.app}>
-        <Deck {...deck} {...actions} />
+        <Deck {...actions} {...deck} {...card} />
       </div>
     );
   }
 }
 
 const mapStateToProps = state => {
-  const { deck } = state;
+  const { deck, card } = state;
 
   return {
-    deck
+    deck,
+    card
   };
 };
 
