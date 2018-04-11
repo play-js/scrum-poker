@@ -15,6 +15,10 @@ const styles = theme => ({
     height: "100%",
     padding: theme.spacing.unit * 2
   },
+  gridItem: {
+    display: "flex",
+    alignItems: "stretch"
+  },
   rotate: {
     transition: "1s",
     transform: "rotateY(90deg)"
@@ -60,7 +64,14 @@ class Deck extends React.Component {
         spacing={16}
       >
         {this.valueList.map((value, index) => (
-          <Grid item xs={3} sm={2} xl={1} key={value}>
+          <Grid
+            item
+            xs={3}
+            sm={2}
+            xl={1}
+            key={value}
+            className={classes.gridItem}
+          >
             <PokerCard
               value={value}
               transitionDelay={unit * index}

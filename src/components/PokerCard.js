@@ -11,6 +11,7 @@ import Grow from "material-ui/transitions/Grow";
 
 const styles = theme => ({
   card: {
+    flex: 1,
     display: "flex",
     alignItems: "center"
   },
@@ -86,7 +87,7 @@ class PokerCard extends React.Component {
         <Card
           className={classes.card}
           raised={raised}
-          style={{ width, height }}
+          // style={{ width, height }}
           onMouseEnter={() => this.setState({ raised: true })}
           onMouseLeave={() => this.setState({ raised: false })}
           onClick={handleClick}
