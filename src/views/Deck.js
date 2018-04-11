@@ -70,7 +70,7 @@ class Deck extends React.Component {
             sm={2}
             xl={1}
             key={value}
-            className={classes.gridItem}
+            // className={classes.gridItem}
           >
             <PokerCard
               value={value}
