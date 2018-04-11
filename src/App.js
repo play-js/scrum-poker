@@ -5,15 +5,17 @@ import { withStyles } from "material-ui/styles";
 import { Deck } from "views";
 
 const styles = theme => ({
-  App: {
+  app: {
     height: "100%"
   }
 });
 
 class App extends React.Component {
   render() {
+    const { classes } = this.props;
+
     return (
-      <div className="App">
+      <div className={classes.app}>
         <Deck />
       </div>
     );

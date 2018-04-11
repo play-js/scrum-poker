@@ -68,7 +68,8 @@ class PokerCard extends React.Component {
   // };
 
   handleClick = () => {
-    alert(this.props.value);
+    this.props.onRequestClick();
+    // alert(this.props.value);
   };
 
   render() {

@@ -8,14 +8,15 @@ import LocalCafe from "material-ui-icons/LocalCafe";
 // import { PokerCard, ZoomedCard } from "components";
 import { PokerCard } from "components";
 // Others
+import classNames from "classnames";
 
 const styles = theme => ({
   root: {
-    "&:hover": {
-      background: "pink",
-      transition: "1s",
-      transform: "rotateY(90deg)"
-    }
+    height: "100%"
+  },
+  rotate: {
+    transition: "1s",
+    transform: "rotateY(90deg)"
   }
 });
 
@@ -38,15 +39,28 @@ class Deck extends React.Component {
   ];
   delay = 1000;
   unit = parseInt(this.delay / this.valueList.length, 10);
+  state = {
+    isRotated: false
+  };
 
   render() {
     const { classes } = this.props;
+    const { isRotated } = this.state;
     const { unit } = this;
 
     return (
-      <Grid container className={classes.root} spacing={16}>
+      <Grid
+        container
+        className={classNames(classes.root, { [classes.rotate]: isRotated })}
+        spacing={16}
+      >
         {this.valueList.map((value, index) => (
-          <PokerCard key={value} value={value} transitionDelay={unit * index} />
+          <PokerCard
+            key={value}
+            value={value}
+            transitionDelay={unit * index}
+            onRequestClick={() => this.setState({ isRotated: true })}
+          />
         ))}
         {/* <ZoomedCard in={true} /> */}
       </Grid>
