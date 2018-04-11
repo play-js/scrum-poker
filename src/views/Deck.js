@@ -54,14 +54,14 @@ class Deck extends React.Component {
   };
 
   render() {
-    const { classes, isRotated } = this.props;
+    const { classes, theme, isRotated } = this.props;
     const { unit, handleRequestClick } = this;
 
     return (
       <Grid
         container
         className={classNames(classes.root, { [classes.rotate]: isRotated })}
-        spacing={16}
+        spacing={theme.spacing.unit * 2}
       >
         {this.valueList.map((value, index) => (
           <Grid
@@ -85,4 +85,4 @@ class Deck extends React.Component {
   }
 }
 
-export default withStyles(styles)(Deck);
+export default withStyles(styles, { withTheme: true })(Deck);
