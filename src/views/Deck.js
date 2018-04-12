@@ -21,7 +21,7 @@ const styles = theme => ({
   },
   rotate: {
     transition: "1s",
-    transform: "rotateY(90deg)"
+    transform: "rotateY(180deg)"
   }
 });
 
@@ -60,7 +60,9 @@ class Deck extends React.Component {
     return (
       <Grid
         container
-        className={classNames(classes.root, { [classes.rotate]: isRotated })}
+        className={classNames(classes.root, {
+          [classes.rotate]: isRotated
+        })}
         spacing={theme.spacing.unit * 2}
       >
         {this.valueList.map((value, index) => (
