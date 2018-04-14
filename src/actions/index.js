@@ -2,17 +2,17 @@ export const ROTATE_DECK = "ROTATE_DECK";
 export const SET_CARD_VALUE = "SET_CARD_VALUE";
 export const ROTATE_CARD = "ROTATE_CARD";
 
-export const rotateDeck = rotate => ({
+export const rotateDeck = isRotatedDeck => ({
   type: ROTATE_DECK,
-  rotate
+  isRotatedDeck
 });
 
-export const setCardValue = value => ({
+export const setCardValue = cardValue => ({
   type: SET_CARD_VALUE,
-  value
+  cardValue
 });
 
-export const rotateCard = rotate => ({
+export const rotateCard = isRotatedCard => ({
   type: ROTATE_CARD,
-  rotate
+  isRotatedCard
 });

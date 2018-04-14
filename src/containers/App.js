@@ -4,22 +4,42 @@ import { bindActionCreators } from "redux";
 // Material-UI
 import { withStyles } from "material-ui/styles";
 // custom
-import { Deck } from "views";
+import { Deck, ZoomedCard } from "views";
 import * as ScrumPokerActionCreators from "actions";
+// others
+import classNames from "classnames";
 
 const styles = theme => ({
   app: {
     height: "100%"
+  },
+  rotate: {
+    transition: "1s",
+    backfaceVisibility: "hidden",
+    transform: "rotateY(180deg)"
   }
 });
 
 class App extends React.Component {
   render() {
-    const { classes, deck, card, actions } = this.props;
+    const { classes, deck, actions } = this.props;
 
     return (
       <div className={classes.app}>
-        <Deck {...actions} {...deck} {...card} />
+        <Deck
+          className={classNames(classes.rotate, {
+            [classes.rotate]: deck.isRotatedDeck
+          })}
+          {...actions}
+          {...deck}
+        />
+        <ZoomedCard
+          className={classNames(classes.rotate, {
+            [classes.rotate]: !deck.isRotatedDeck
+          })}
+          {...actions}
+          {...deck}
+        />
       </div>
     );
   }

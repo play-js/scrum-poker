@@ -13,16 +13,19 @@ import classNames from "classnames";
 const styles = theme => ({
   root: {
     height: "100%",
-    padding: theme.spacing.unit * 2
+    padding: theme.spacing.unit * 2,
+    zIndex: 2,
+    backfaceVisibility: "hidden"
   },
   gridItem: {
     display: "flex",
     alignItems: "stretch"
-  },
-  rotate: {
-    transition: "1s",
-    transform: "rotateY(180deg)"
   }
+  // rotate: {
+  //   transition: "1s",
+  //   transform: "rotateY(180deg)",
+  //   backfaceVisibility: "visible"
+  // }
 });
 
 class Deck extends React.Component {
@@ -46,22 +49,22 @@ class Deck extends React.Component {
   unit = parseInt(this.delay / this.valueList.length, 10);
 
   handleRequestClick = value => () => {
-    const { rotateDeck, setCardValue, rotateCard } = this.props;
+    const { rotateDeck, setCardValue, isRotatedDeck } = this.props;
 
-    rotateDeck(true);
+    rotateDeck(!isRotatedDeck);
     setCardValue(value);
-    rotateCard(true);
+    // rotateCard(true);
   };
 
   render() {
-    const { classes, theme, isRotated } = this.props;
+    const { classes, theme, isRotatedDeck } = this.props;
     const { unit, handleRequestClick } = this;
 
     return (
       <Grid
         container
         className={classNames(classes.root, {
-          [classes.rotate]: isRotated
+          [classes.rotate]: isRotatedDeck
         })}
         spacing={theme.spacing.unit * 2}
       >

@@ -3,44 +3,35 @@ import { ROTATE_DECK, SET_CARD_VALUE, ROTATE_CARD } from "actions";
 
 const deck = (
   state = {
-    isRotated: false
+    isRotatedDeck: false,
+    isRotatedCard: false,
+    cardValue: ""
   },
   action
 ) => {
-  switch (action.type) {
+  const { type, isRotatedDeck, cardValue, isRotatedCard } = action;
+
+  switch (type) {
     case ROTATE_DECK:
       return {
         ...state,
-        isRotated: action.rotate
+        isRotatedDeck
       };
-    default:
-      return state;
-  }
-};
-
-const card = (
-  state = {
-    isRotated: false,
-    value: ""
-  },
-  action
-) => {
-  switch (action.type) {
     case SET_CARD_VALUE:
       return {
         ...state,
-        value: action.value
+        cardValue
       };
     case ROTATE_CARD:
       return {
         ...state,
-        isRotated: action.rotate
+        isRotatedCard
       };
     default:
       return state;
   }
 };
 
-const rootReducer = combineReducers({ deck, card });
+const rootReducer = combineReducers({ deck });
 
 export default rootReducer;
